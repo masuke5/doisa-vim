@@ -6,6 +6,11 @@ set nosecure
 let s:enabled = 1
 
 let s:long = {
+  \ 'A': 'Á',
+  \ 'E': 'É',
+  \ 'I': 'Í',
+  \ 'O': 'Ó',
+  \ 'U': 'Ú',
   \ 'a': 'á',
   \ 'e': 'é',
   \ 'i': 'í',
@@ -25,7 +30,7 @@ endfunction
 function! doisa#convert()
   if s:enabled
     for [key, value] in items(s:long)
-      execute ':' . line('.') . ' s/' . key . '`/' . value . '/ge'
+      execute ':' . line('.') . ' s/' . key . '`/' . value . '/geI'
     endfor
   endif
 endfunction
