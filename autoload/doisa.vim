@@ -19,6 +19,12 @@ let s:long = {
   \ '`': '`',
   \ }
 
+let s:slash = {
+  \ 'O': 'Ø',
+  \ 'o': 'ø',
+  \ '\/': '\/',
+  \ }
+
 function! doisa#disable() 
   let s:enabled = 0
 endfunction
@@ -31,6 +37,9 @@ function! doisa#convert()
   if s:enabled
     for [key, value] in items(s:long)
       execute ':' . line('.') . ' s/' . key . '`/' . value . '/geI'
+    endfor
+    for [key, value] in items(s:slash)
+      execute ':' . line('.') . ' s/' . key . '\//' . value . '/geI'
     endfor
   endif
 endfunction
